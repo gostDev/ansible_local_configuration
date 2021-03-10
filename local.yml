@@ -4,9 +4,30 @@
   become: true
 
   tasks:
-  - name: install htop
+  - name: install packages
     package:
       name: 
         - htop
         - tmux
         - vim
+        - dconf-editor
+
+  - name: add ansible user
+    user: 
+      name: velociraptor
+      system: yes
+  
+  - name: set up sudo for ansible user
+    copy:
+      src: files/sudoers_velociraptor
+      dest: /etc/sudoers.d/velociraptor
+      owner: root
+      group: root
+      mode: 0440
+
+  - name: add ansible-pull cron job
+    cron:
+      name: ansible auto-provision
+      user: velociraptor
+      minute: "*/10"
+      job: ansible-pull -o -U https://github.com/gostDev/ansible_local_configuration.git
