@@ -1,0 +1,1 @@
+sudo ansible-pull -U https://github.com/gostDev/ansible_local_configuration.git
