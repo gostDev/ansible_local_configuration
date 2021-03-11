@@ -25,6 +25,8 @@
         - htop
         - tmux
         - dconf-editor
+        - keepassxc
+        - imagewriter
 
   - name: install packages for programming
     package:
@@ -33,7 +35,7 @@
         - nodejs
         - mongodb-bin
         - ruby
-
+        - python
 
   - name: install packages for tools
     package:
@@ -43,3 +45,5 @@
         - virtualbox-guest-utils
         - mongodb-compass
         - robo3t-bin
+        - zeal
+        - docker
