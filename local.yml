@@ -4,30 +4,42 @@
   become: true
 
   tasks:
-  - name: install packages
+  - name: install packages for Communication
+    package:
+      name: 
+        - viber
+        - caprine
+        - skypeforlinux-stable-bin
+        - signal
+        - whatsapp-for-linux
+        - whatsapp-web-jak
+
+  - name: install packages for Entertainment
+    package:
+      name: 
+        - gimp
+
+  - name: install packages for system
     package:
       name: 
         - htop
         - tmux
-        - vim
         - dconf-editor
 
-  - name: add ansible user
-    user: 
-      name: velociraptor
-      system: yes
-  
-  - name: set up sudo for ansible user
-    copy:
-      src: files/sudoers_velociraptor
-      dest: /etc/sudoers.d/velociraptor
-      owner: root
-      group: root
-      mode: 0440
+  - name: install packages for programming
+    package:
+      name: 
+        - go
+        - nodejs
+        - mongodb-bin
+        - ruby
 
-  - name: add ansible-pull cron job
-    cron:
-      name: ansible auto-provision
-      user: velociraptor
-      minute: "*/10"
-      job: ansible-pull -o -U https://github.com/gostDev/ansible_local_configuration.git
+
+  - name: install packages for tools
+    package:
+      name: 
+        - visual-studio-code-bin
+        - virtualbox
+        - virtualbox-guest-utils
+        - mongodb-compass
+        - robo3t-bin
