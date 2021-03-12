@@ -43,6 +43,7 @@
         - python
         - stack
         - spring-boot-cli
+        - spring-tool-suite
 
   - name: install packages for tools
     package:
@@ -58,3 +59,10 @@
   - name: pull images in Docker
     docker_image:
       name: sebp/elk
+
+  - name: install gem rails
+    gem:
+      name: 
+        - rails
+        - bundler
+      state: latest    
