@@ -18,6 +18,10 @@
     package:
       name: 
         - gimp
+        - vlc
+        - xine-lib
+        - xine-ui
+        - mpv
 
   - name: install packages for system
     package:
@@ -33,9 +37,12 @@
       name: 
         - go
         - nodejs
+        - npm
         - mongodb-bin
         - ruby
         - python
+        - stack
+        - spring-boot-cli
 
   - name: install packages for tools
     package:
@@ -47,3 +54,7 @@
         - robo3t-bin
         - zeal
         - docker
+
+  - name: pull images in Docker
+    docker_image:
+      name: sebp/elk
